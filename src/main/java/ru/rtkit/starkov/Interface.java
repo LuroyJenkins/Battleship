@@ -8,39 +8,48 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Interface {
     public static Scanner scanner = new Scanner(System.in);
-    private static String input;
 
     public static void main(String[] args) {
         GameBoard gameBoard1 = new GameBoard();
         GameBoard gameBoard2 = new GameBoard();
 
         enteringCoordinates(gameBoard1);
+        resultAnnouncement(gameBoard1);
+        System.out.println("Нажмите Enter для продолжения...");
+        scanner.nextLine();
+        for(int i = 0; i < 100; i++){
+            System.out.println();
+        }
         enteringCoordinates(gameBoard2);
-
+        resultAnnouncement(gameBoard1);
+        System.out.println("Нажмите Enter для продолжения...");
+        scanner.nextLine();
+        for(int i = 0; i < 100; i++){
+            System.out.println();
+        }
         phaseOfMoves(gameBoard1, gameBoard2);
     }
 
     public static void enteringCoordinates(GameBoard gameBoard) {
         System.out.println("Игрок - " + gameBoard.getPlayerName() + ", задай координаты своих кораблей:");
-        while (true){
+        do {
             System.out.println("Введи координаты четырехпалубного корабля (формат: x1,y1;x2,y2;x3,y3;x4,y4)");
-            if(Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine())) != null)
-                break;
-        }
+        } while (Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine())) == null);
         for (int i = 0; i < 2; i++) {
-            System.out.println("Введи координаты трехпалубного корабля (формат: x1,y1;x2,y2;x3,y3)");
-            if(Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine())) == null)
-                i--;
+            do {
+                System.out.println("Введи координаты трехпалубного корабля (формат: x1,y1;x2,y2;x3,y3)");
+            } while (Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine())) == null);
         }
         for (int i = 0; i < 3; i++) {
-            System.out.println("Введи координаты двухпалубного корабля (формат: x1,y1;x2,y2)");
-            Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine()));
+            do {
+                System.out.println("Введи координаты двухпалубного корабля (формат: x1,y1;x2,y2)");
+            } while (Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine())) == null);
         }
         for (int i = 0; i < 4; i++) {
-            System.out.println("Введи координаты однопалубного корабля (формат: x1,y1)");
-            Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine()));
+            do {
+                System.out.println("Введи координаты однопалубного корабля (формат: x1,y1)");
+            } while (Gameplay.placeShipUnified(gameBoard, Utils.coordinatesLineParsing(scanner.nextLine())) == null);
         }
-
     }
 
     public static void phaseOfMoves(GameBoard gameBoard1, GameBoard gameBoard2) {
@@ -50,7 +59,8 @@ public class Interface {
             }
         } else
             playersTurn(gameBoard2, gameBoard1);
-        resultAnnouncement(gameBoard1, gameBoard2);
+        resultAnnouncement(gameBoard1);
+        resultAnnouncement(gameBoard2);
     }
 
     public static void playersTurn(GameBoard player1, GameBoard player2) {
@@ -65,6 +75,7 @@ public class Interface {
     }
 
     public static void playerInputMove(GameBoard gameBoard) {
+        String input;
         while (true) {
             input = scanner.nextLine();
             if (Utils.coordinatesLineParsing(input).length == 2)
@@ -74,11 +85,9 @@ public class Interface {
         Gameplay.move(gameBoard, Utils.coordinatesLineParsing(input));
     }
 
-    public static void resultAnnouncement(GameBoard gameBoard1, GameBoard gameBoard2) {
-        System.out.println("Поле игрока " + gameBoard1.getPlayerName());
-        gameBoard1.printGameBoard();
+    public static void resultAnnouncement(GameBoard gameBoard) {
+        System.out.println("Поле игрока " + gameBoard.getPlayerName());
+        gameBoard.printGameBoard();
         System.out.println();
-        System.out.println("Поле игрока " + gameBoard2.getPlayerName());
-        gameBoard2.printGameBoard();
     }
 }

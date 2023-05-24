@@ -3,7 +3,7 @@ package ru.rtkit.starkov.entities.ships;
 import ru.rtkit.starkov.entities.GameBoard;
 
 public class Battleship extends Ship implements ShipStatus {
-    private int x1, x2, x3, x4, y1, y2, y3, y4;
+    private final int x1, x2, x3, x4, y1, y2, y3, y4;
 
     public Battleship(GameBoard gameBoard, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
         super(gameBoard);

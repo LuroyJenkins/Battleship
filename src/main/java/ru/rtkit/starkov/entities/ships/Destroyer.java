@@ -3,7 +3,7 @@ package ru.rtkit.starkov.entities.ships;
 import ru.rtkit.starkov.entities.GameBoard;
 
 public class Destroyer extends Ship implements ShipStatus{
-    private int x1, x2, y1, y2;
+    private final int x1, x2, y1, y2;
 
     public Destroyer(GameBoard gameBoard, int x1, int y1, int x2, int y2) {
         super(gameBoard);

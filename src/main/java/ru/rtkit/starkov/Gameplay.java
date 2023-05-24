@@ -55,39 +55,6 @@ public class Gameplay {
         System.out.println("Вы ввели некорректные координаты! Введите снова");
         return null;
     }
-//    public static Ship placeShip(GameBoard gameBoard, int x1, int y1) {
-//        int[] coordinates = {x1, y1};
-//        if (placeCheck(gameBoard, coordinates)) {
-//            gameBoard.setLiveShips(gameBoard.getLiveShips() + 1);
-//            return new Speedboat(gameBoard, x1, y1);
-//        } else return null;
-//    }
-//
-//    public static Ship placeShip(GameBoard gameBoard, int x1, int y1, int x2, int y2) {
-//        int[] coordinates = {x1, y1, x2, y2};
-//        if (placeCheck(gameBoard, coordinates)) {
-//            gameBoard.setLiveShips(gameBoard.getLiveShips() + 1);
-//            return new Destroyer(gameBoard, x1, x2, y1, y2);
-//        } else return null;
-//    }
-//
-//    public static Ship placeShip(GameBoard gameBoard, int x1, int y1, int x2, int y2, int x3, int y3) {
-//        int[] coordinates = {x1, y1, x2, y2, x3, y3};
-//        if (placeCheck(gameBoard, coordinates)) {
-//            gameBoard.setLiveShips(gameBoard.getLiveShips() + 1);
-//            return new Cruiser(gameBoard, x1, x2, x3, y1, y2, y3);
-//        }
-//        return null;
-//    }
-//
-//    public static Ship placeShip(GameBoard gameBoard, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
-//        int[] coordinates = {x1, y1, x2, y2, x3, y3, x4, y4};
-//        if (placeCheck(gameBoard, coordinates)) {
-//            gameBoard.setLiveShips(gameBoard.getLiveShips() + 1);
-//            return new Battleship(gameBoard, x1, x2, x3, x4, y1, y2, y3, y4);
-//        }
-//        return null;
-//    }
 
     public static void move(GameBoard gameBoard, int[] coordinates) {
         Cell cell = gameBoard.getGameBoard()[coordinates[0]][coordinates[1]];
@@ -106,6 +73,9 @@ public class Gameplay {
                     move(gameBoard, Utils.coordinatesLineParsing(Interface.scanner.nextLine()));
                 }
             }
+        } else if (cell.isExploded()) {
+            System.out.println("Вы уже стреляли сюда! Введите координаты повторно");
+            move(gameBoard, Utils.coordinatesLineParsing(Interface.scanner.nextLine()));
         } else if (!cell.isBusy()) {
             System.out.println("Мимо!");
         }
