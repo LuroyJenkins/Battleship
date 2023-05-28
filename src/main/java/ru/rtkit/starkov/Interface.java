@@ -21,7 +21,7 @@ public class Interface {
             System.out.println();
         }
         enteringCoordinates(gameBoard2);
-        resultAnnouncement(gameBoard1);
+        resultAnnouncement(gameBoard2);
         System.out.println("Нажмите Enter для продолжения...");
         scanner.nextLine();
         for(int i = 0; i < 100; i++){
@@ -65,10 +65,10 @@ public class Interface {
 
     public static void playersTurn(GameBoard player1, GameBoard player2) {
         while (!Gameplay.victoryCheck(player1, player2)) {
-            System.out.println(player1.getPlayerName() + ", введи координаты для выстрела (формат: x,y");
+            System.out.println(player1.getPlayerName() + ", введи координаты для выстрела (формат: x,y)");
             playerInputMove(player2);
             if (!Gameplay.victoryCheck(player1, player2)) {
-                System.out.println(player2.getPlayerName() + ", введи координаты для выстрела (формат: x,y");
+                System.out.println(player2.getPlayerName() + ", введи координаты для выстрела (формат: x,y)");
                 playerInputMove(player1);
             } else break;
         }
