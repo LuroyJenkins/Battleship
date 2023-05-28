@@ -1,9 +1,10 @@
 # Battleship Console Game🚢
 
-This is a console-based implementation of the classic [game Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) with an improved CLI graphics system.
+- This is a console-based implementation of the classic [game Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) with an improved CLI graphics system.
+- The final project of Marathon "Java for beginners" by [Nail Alishev](https://www.youtube.com/@alishevN)
 
 ## Getting started:
-You will need to have Java 8+ installed on your computer to run this game.
+You will need to have Java 8+ and Gradle installed on your computer to run this game.
 
 ## Installation:
 1. Clone or download this repository to your local machine.
