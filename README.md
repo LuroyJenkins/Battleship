@@ -2,6 +2,8 @@
 
 - This is a console-based implementation of the classic [game Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) with an improved CLI graphics system.
 - The final project of Marathon "Java for beginners" by [Nail Alishev](https://www.youtube.com/@alishevN)
+- **Stack:** Java, Gradle
+- [Task](https://docs.google.com/document/d/1Pu-8OsB72fqkj3VfigI1Lupvng_RdqXzLaCtlmLqxnk/edit?usp=drivesdk)
 
 ## Getting started:
 You will need to have Java 8+ and Gradle installed on your computer to run this game.
